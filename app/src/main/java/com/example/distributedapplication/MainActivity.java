@@ -119,7 +119,8 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
 
         String stco2 = String.format("%.3f", totalConsumption);
 
-        String timestamp = getCurrentTime();
+        String timestamp = getCurrentTimestamp();
+
 
         mqttusermessage = timestamp + "_" + stco2;
 
@@ -143,11 +144,17 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
         runOnUiThread(() -> TVavdata.setText(message));
     }
 
-    public static String getCurrentTime() {
-        Instant instant = Instant.now();
-        long currentTimeMillis = instant.toEpochMilli();
-        return String.valueOf(currentTimeMillis);
-    }
+    private String getCurrentTimestamp() {
+        long timestamp = System.currentTimeMillis();
+        String timestampString = String.valueOf(timestamp);
 
+        // Stelle sicher, dass der String genau 13 Stellen hat
+        while (timestampString.length() < 13) {
+            timestampString = "0" + timestampString;
+        }
+
+       // Log.d("TAG_mqtt", "timestampString: " + timestampString);
+        return timestampString;
+    }
 
 }
