@@ -2,7 +2,6 @@ package com.example.distributedapplication;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,15 +19,14 @@ public class MqttHandler extends AppCompatActivity {
     private MQTTCallback callback;
     private MqttAndroidClient mqttAndroidClient;
     public String message_received = "No message received";
-
     final String serverUri = "tcp://192.168.56.1:1883"; //"tcp://iot.eclipse.org:1883";
     final String subscriptionTopic = "footprint/average";
     final String publishTopic = "footprint/userdata";
 
     String clientId = "ExampleAndroidClient";
 
-    public void setCallback(MQTTCallback callback){
-        this.callback=callback;
+    public void setCallback(MQTTCallback callback) {
+        this.callback = callback;
     }
 
     public void init(Context applicationContext, final Runnable onConnect) {
@@ -58,8 +56,7 @@ public class MqttHandler extends AppCompatActivity {
             public void messageArrived(String topic, MqttMessage message) {
                 message_received = new String(message.getPayload());
                 Log.d("TAG_mqtt", "Incoming message: " + new String(message.getPayload()));
-                //  TVavdata.setText(new String(message.getPayload()));
-                if (callback != null){
+                if (callback != null) {
                     callback.onMessageArrived(message_received);
                 }
             }
