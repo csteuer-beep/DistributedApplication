@@ -129,7 +129,7 @@ public class MqttHandler extends AppCompatActivity {
         MqttMessage message = new MqttMessage();
         message.setPayload(publishMessage.getBytes());
         message.setRetained(false);
-        message.setQos(1); // Set the QoS level
+        message.setQos(2); // Set the QoS level
 
         if (mqttAndroidClient.isConnected()) {
             try {

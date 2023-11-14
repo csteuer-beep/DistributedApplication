@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
         // Button
         Bsenddata = findViewById(R.id.Bsenddata);
 
-        explain.setText("Please insert you CO² consumption in kg of today.");
+        explain.setText("Please insert you CO² consumption in grams of today.");
 
 
         mqttHandler = new MqttHandler();
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
 
         String stco2 = String.format("%.3f", totalConsumption);
 
+
         String timestamp = getCurrentTimestamp();
 
 
@@ -127,8 +128,6 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
         TVusdata.setText(stco2);
 
         try {
-
-            // mqttHandler.publishMessage(mqttusermessage);
             Context context = this;
             mqttHandler.publishMessage(mqttusermessage);
 
