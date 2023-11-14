@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
         // Button
         Bsenddata = findViewById(R.id.Bsenddata);
 
-        explain.setText("Please insert you CO² consumption in grams of today.");
+       // explain.setText("Please insert you CO² consumption in grams of today.");
 
 
         mqttHandler = new MqttHandler();
