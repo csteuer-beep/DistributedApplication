@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
 
     @Override
     public void onMessageArrived(String message) {
-        float incomingValue = Float.parseFloat(message);
+        String incomingValue = message;
        // String message1 = String.valueOf(incomingValue);
         runOnUiThread(() -> TVavdata.setText(String.valueOf(incomingValue)));
     }
