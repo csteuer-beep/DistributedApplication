@@ -103,7 +103,7 @@ public class MqttHandler extends AppCompatActivity {
 
     public void subscribeToTopic() {
         try {
-            mqttAndroidClient.subscribe(subscriptionTopic, 1, null, new IMqttActionListener() {
+            mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
                     Log.d("TAG_mqtt", "Subscribed to: " + subscriptionTopic);

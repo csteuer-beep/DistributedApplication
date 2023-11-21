@@ -16,9 +16,9 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity implements MQTTCallback {
 
 
-    public String mqttusermessage = "1699652067002_236";
+    public String mqttusermessage = "1699652067002_236"; //example message
     private static final String serverUri = "tcp://192.168.56.1:1883";
-    private static final String CLIENT_ID = "your_client_id";
+    private static final String CLIENT_ID = "initial_client_id";
     public String incommingMessageVar;
     TextView explain, TVusdatat, TVusdata, textView3, TVavdata;
     private EditText value1Field, value2Field, value3Field, value4Field, value5Field,
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
         // Button
         Bsenddata = findViewById(R.id.Bsenddata);
 
-       // explain.setText("Please insert you CO² consumption in grams of today.");
+        // explain.setText("Please insert you CO² consumption in grams of today.");
 
 
         mqttHandler = new MqttHandler();
@@ -141,7 +141,6 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
     @Override
     public void onMessageArrived(String message) {
         String incomingValue = message;
-       // String message1 = String.valueOf(incomingValue);
         runOnUiThread(() -> TVavdata.setText(String.valueOf(incomingValue)));
     }
 
@@ -149,12 +148,12 @@ public class MainActivity extends AppCompatActivity implements MQTTCallback {
         long timestamp = System.currentTimeMillis();
         String timestampString = String.valueOf(timestamp);
 
-        // Stelle sicher, dass der String genau 13 Stellen hat
+
         while (timestampString.length() < 13) {
             timestampString = "0" + timestampString;
         }
 
-       // Log.d("TAG_mqtt", "timestampString: " + timestampString);
+        // Log.d("TAG_mqtt", "timestampString: " + timestampString);
         return timestampString;
     }
 
